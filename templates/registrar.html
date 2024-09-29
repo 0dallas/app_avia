@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='registrar.css')}}">
+</head>
+<body>
+    <img src="{{ url_for('static', filename='img/logo_avia.png') }}" class="logo" width="200" height="100">
+    <div class="container">
+        <h2>Regístrese</h2>
+        <form method="POST">
+            <label for="user">Usuario</label>
+            <input type="text" id="user" name="user" required>
+            <br>
+            <label for="contra1">Contraseña</label>
+            <input type="password" id="contra1" name="contra1" required>
+            <br>
+            <label for="contra2">Repita contraseña</label>
+            <input type="password" id="contra2" name="contra2" required>
+            <br>
+            <label for="correo">Correo</label>
+            <input type="text" id="correo" name="correo" required>
+            <br>
+            <div>
+                <button type="submit">Aceptar</button>
+                <a href="{{url_for('login')}}" class="btn_reg">Cancelar</a>
+            </div>
+          
+        </form>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+    </div>
+</body>
+</html>

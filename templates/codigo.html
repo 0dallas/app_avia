@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='codigo.css')}}">
+</head>
+<body>
+    <img src="{{ url_for('static', filename='img/logo_avia.png') }}" class="logo" width="200" height="100">
+    <div class="container">
+        <h2>Código de verificación</h2><br>
+        <form method="POST">
+            {% if correo %}
+            <label for="codigo">Ingrese código de verificación enviado a <b>{{correo}}</b></label>
+            {% endif %}
+            <br>
+            <input type="text" id="codigo" name="codigo" required>
+            <br>
+            <div>
+                <button type="submit">Aceptar</button>  
+                <a href="{{url_for('login')}}" class="btn_reg">Cancelar</a>
+            </div>
+            
+        </form>
+        
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+    </div>
+</body>
+</html>

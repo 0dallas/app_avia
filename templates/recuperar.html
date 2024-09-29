@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='recuperar.css')}}">
+</head>
+<body>
+    <img src="{{ url_for('static', filename='img/logo_avia.png') }}" class="logo" width="200" height="100">
+    <div class="container">
+        <h2>Datos para recuperación</h2>
+        <form method="POST">
+            <label for="correo">Ingrese correo</label>
+            <input type='text' id="correo" name="correo" required>
+            <br><br>
+            <div>
+                <button type="submit">Aceptar</button>
+                <a href="{{url_for('login')}}" class="btn_reg">Cancelar</a>
+            </div>
+            
+        </form>  
+        
+
+    </div>
+</body>
+</html>
