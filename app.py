@@ -11,6 +11,11 @@ import pandas as pd
 from datetime import datetime
 import joblib
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 pipeline = joblib.load('model_pipeline.pkl')
 
 app = Flask(__name__)
@@ -32,13 +37,13 @@ def generar_codigo(longitud=6):
     return codigo
 
 def enviar_email(reciber,cod):
-    email_sender = 'labicavia@gmail.com'
-    password = 'bihs cegu pmbi khkc'
+    email_sender = os.environ['EMAIL']
+    password = os.environ['PASS']
     email_reciber = reciber
     message = MIMEMultipart()
     message['From'] = email_sender
     message['To'] = email_reciber
-    message['Subject'] = "Email prueba"
+    message['Subject'] = "Verificación"
     body = f"Hola, este es tu código de verificación: {cod}"
     message.attach(MIMEText(body,'plain'))
     smtp_server = smtplib.SMTP('smtp.gmail.com',587)
