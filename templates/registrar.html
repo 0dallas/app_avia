@@ -9,7 +9,9 @@
 <body>
     <img src="{{ url_for('static', filename='img/logo_avia.png') }}" class="logo" width="200" height="100">
     <div class="container">
-        <h2>Regístrese</h2>
+        <h2>Regístrese</h2><br>
+        <p class="des">Antes que nada, voy a necesitar un usuario, correo electrónico, para identificarte. Es importante para nosotros poder enviarte un informe personalizado al final del cuestionario, pero tranquilo que no te vamos a molestar.</p>
+        <br>
         <form method="POST">
             <label for="user">Usuario</label>
             <input type="text" id="user" name="user" required>

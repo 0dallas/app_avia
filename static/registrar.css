@@ -13,7 +13,7 @@ body {
 
 .container {
     max-width: 600px;
-    height: 400px;
+    height: 500px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -23,6 +23,11 @@ body {
     background-color: #d3f7d3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
+}
+
+.des {
+    width: 400px;
+    display: flex;
 }
 
 input {
@@ -75,12 +80,16 @@ button[type="submit"] {
 
     .container {
         width: 90%;
-        height: 450px;
+        height: 500px;
         padding-right: 20px;
     }
 
     input {
         height: 25px;
         width: 90%;
+    }
+    .des {
+        width: 100%;
+        display: flex;
     }
 }
