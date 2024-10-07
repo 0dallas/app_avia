@@ -1,20 +1,10 @@
 from flask import Flask, jsonify, request, render_template,redirect,url_for,flash,session
 
-import random
-import string
-
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-
 import pandas as pd
 from datetime import datetime
 import joblib
 
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
+from func import enviar_email,generar_codigo, hash_password, verify_password
 
 pipeline = joblib.load('model_pipeline.pkl')
 
@@ -31,26 +21,6 @@ USER_CREDENTIALS = {
     "password": "pass"
 }
 
-def generar_codigo(longitud=6):
-    caracteres = string.ascii_uppercase + string.digits
-    codigo = ''.join(random.choice(caracteres) for _ in range(longitud))
-    return codigo
-
-def enviar_email(reciber,cod):
-    email_sender = os.environ['EMAIL']
-    password = os.environ['PASS']
-    email_reciber = reciber
-    message = MIMEMultipart()
-    message['From'] = email_sender
-    message['To'] = email_reciber
-    message['Subject'] = "Verificación"
-    body = f"Hola, este es tu código de verificación: {cod}"
-    message.attach(MIMEText(body,'plain'))
-    smtp_server = smtplib.SMTP('smtp.gmail.com',587)
-    smtp_server.starttls()
-    smtp_server.login(email_sender,password)
-    smtp_server.sendmail(email_sender,email_reciber,message.as_string())
-    smtp_server.quit()
 
 @app.route('/')
 def main():
