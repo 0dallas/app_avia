@@ -24,11 +24,6 @@ cod = ''
 user_global = ''
 df = pd.DataFrame([{'user':'init'}])
 
-# USER_CREDENTIALS = {
-#     "username": "user",
-#     "password": "pass"
-# }
-
 
 @app.route('/')
 def main():
