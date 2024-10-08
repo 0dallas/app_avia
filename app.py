@@ -319,13 +319,13 @@ def logout():
     return redirect(url_for('main'))
 
 
-@app.route('/json')
-def hello_world():
-    return jsonify({"message": "¡Hola, Flask!"})
+# @app.route('/json')
+# def hello_world():
+#     return jsonify({"message": "¡Hola, Flask!"})
 
-@app.route('/estilo')
-def estilo():
-    return render_template('estilo.html')
+# @app.route('/estilo')
+# def estilo():
+#     return render_template('estilo.html')
 
 @app.route('/juego')
 def juego():
