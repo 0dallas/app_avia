@@ -7,8 +7,12 @@ import string
 
 import bcrypt
 
+from google.cloud.sql.connector import Connector
+connector = Connector()
+
 from dotenv import load_dotenv
 import os
+import re
 
 load_dotenv()
 
@@ -41,3 +45,100 @@ def hash_password(password: str) -> str:
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     return bcrypt.checkpw(plain_password.encode(), hashed_password.encode())
+
+
+def existe_usuario_correo(user,email):
+    conn = connector.connect(
+            os.environ["INSTANCE_CONNECTION_NAME"],
+            "pg8000",
+            user=os.environ["DB_USER"],
+            password=os.environ["DB_PASS"],
+            db=os.environ["DB_NAME"]
+        )
+    cursor = conn.cursor()
+    cursor.execute(f'''SELECT usuario FROM public.usuarios WHERE usuario ='{user}' or email = '{email}' ''')
+    result = cursor.fetchall()
+    if len(result) == 0:
+        return False ## No existe
+    else:
+        return True ## Existe
+
+def consultar_contra(user,contra):
+    conn = connector.connect(
+            os.environ["INSTANCE_CONNECTION_NAME"],
+            "pg8000",
+            user=os.environ["DB_USER"],
+            password=os.environ["DB_PASS"],
+            db=os.environ["DB_NAME"]
+        )
+    cursor = conn.cursor()
+    cursor.execute(f'''SELECT password FROM public.usuarios WHERE usuario ='{user}'  ''')
+    result = cursor.fetchall()
+    if len(result) ==0:
+        return False
+    else:
+        return verify_password(contra,result[0][0]) ## True, False
+
+def guardar_usuario(us,pa,em,fc):
+    conn = connector.connect(
+            os.environ["INSTANCE_CONNECTION_NAME"],
+            "pg8000",
+            user=os.environ["DB_USER"],
+            password=os.environ["DB_PASS"],
+            db=os.environ["DB_NAME"]
+        )
+    cursor = conn.cursor()
+    insert_query = """
+        INSERT INTO public.usuarios (usuario, password, email, fecha_cre)
+        VALUES (%s, %s, %s, %s)
+    """
+    data_to_insert = (us, hash_password(pa), em, fc)
+    cursor.execute(insert_query, data_to_insert)
+    conn.commit()
+    cursor.close()
+    conn.close() 
+
+def modificar_password(email,pass_nuevo):
+    conn = connector.connect(
+            os.environ["INSTANCE_CONNECTION_NAME"],
+            "pg8000",
+            user=os.environ["DB_USER"],
+            password=os.environ["DB_PASS"],
+            db=os.environ["DB_NAME"]
+        )
+    cursor = conn.cursor()
+    update_query = f"""
+        UPDATE public.usuarios
+        SET password = %s
+        WHERE email = %s
+    """
+    new_password = hash_password(pass_nuevo)
+    email_to_update = email
+    cursor.execute(update_query, (new_password, email_to_update))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+def guardar_data(datos):
+    conn = connector.connect(
+            os.environ["INSTANCE_CONNECTION_NAME"],
+            "pg8000",
+            user=os.environ["DB_USER"],
+            password=os.environ["DB_PASS"],
+            db=os.environ["DB_NAME"]
+        )
+    cursor = conn.cursor()
+    insert_query = """
+        INSERT INTO public.datos 
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    """
+    data_to_insert = datos
+    cursor.execute(insert_query, data_to_insert)
+    conn.commit()
+    cursor.close()
+    conn.close() 
+
+def es_correo_valido(correo):
+    # Expresión regular para validar el formato del correo
+    patron = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+    return re.match(patron, correo)

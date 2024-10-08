@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minijuego: Adivina el número</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        input { padding: 10px; font-size: 16px; }
+        button { padding: 10px 20px; font-size: 16px; }
+        #result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Adivina el número entre 1 y 100</h1>
+    <p>Introduce tu conjetura:</p>
+    <input type="number" id="guess" min="1" max="100">
+    <button onclick="checkGuess()">Adivinar</button>
+    <div id="result"></div>
+
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            let userGuess = document.getElementById('guess').value;
+            attempts++;
+            let resultElement = document.getElementById('result');
+
+            if (userGuess == randomNumber) {
+                resultElement.innerHTML = `¡Correcto! Adivinaste en ${attempts} intentos.`;
+            } else if (userGuess < randomNumber) {
+                resultElement.innerHTML = "¡Demasiado bajo! Intenta de nuevo.";
+            } else {
+                resultElement.innerHTML = "¡Demasiado alto! Intenta de nuevo.";
+            }
+        }
+    </script>
+</body>
+</html>
