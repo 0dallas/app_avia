@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9; /* Color de fondo suave */
+    color: #333; /* Color de texto principal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altura total de la ventana */
+}
+
+.container {
+    text-align: center; /* Centrar el texto */
+    background-color: #ffffff; /* Fondo blanco para el contenedor */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 90%; /* Ajustar el ancho máximo en pantallas pequeñas */
+    margin: 20px; /* Margen alrededor del contenedor */
+    width: 100%; /* Asegurar que ocupe el ancho posible */
+}
+
+h1 {
+    color: #4CAF50; /* Color verde para el título principal */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+h2 {
+    color: #4CAF50; /* Color verde para los subtítulos */
+    margin-top: 20px; /* Espaciado superior */
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+ul {
+    list-style-type: none; /* Sin viñetas */
+    padding: 0; /* Sin espaciado interno */
+    text-align: left; /* Alinear texto a la izquierda */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+li {
+    margin-bottom: 10px; /* Espaciado entre elementos de la lista */
+    padding: 10px; /* Espaciado interno para cada elemento */
+    background-color: #e9f5e9; /* Color de fondo suave para los elementos de la lista */
+    border-radius: 5px; /* Bordes redondeados para los elementos de la lista */
+}
+
+.message-box {
+    padding: 20px; /* Espaciado interno para el cuadro de mensaje */
+    background-color: #f1f1f1; /* Color de fondo suave */
+    border: 1px solid #ccc; /* Borde sutil */
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 20px 0; /* Margen superior e inferior */
+}
+
+.btn {
+    display: inline-block; /* Para que el botón se comporte como un bloque */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    margin-top: 20px; /* Margen superior */
+    background-color: #007bff; /* Color del botón */
+    color: white; /* Color del texto del botón */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 600px) {
+    body {
+        font-size: 16px; /* Aumentar ligeramente el tamaño de la fuente */
+    }
+
+    h1, h2 {
+        font-size: 24px; /* Hacer los títulos un poco más pequeños */
+    }
+
+    .container {
+        padding: 10px; /* Reducir el padding en pantallas pequeñas */
+        box-shadow: none; /* Opcional: eliminar la sombra para un diseño más plano en móviles */
+    }
+
+    .btn {
+        width: 100%; /* Hacer que el botón ocupe el ancho */
+        padding: 15px; /* Aumentar el tamaño del botón para mayor facilidad de uso en pantallas táctiles */
+    }
+
+    ul li {
+        font-size: 14px; /* Ajustar el tamaño del texto de las listas */
+        padding: 8px; /* Reducir el padding para las listas */
+    }
+}

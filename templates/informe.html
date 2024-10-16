@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de Recomendaciones</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='informe.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Informe de Recomendaciones de Salud</h1>
+
+        <h2>Recomendaciones:</h2>
+        <ul>
+            {% for recomendacion in recomendaciones %}
+                <li>{{ recomendacion }}</li>
+            {% endfor %}
+        </ul>
+
+        {#<h2>Servicios:</h2>
+        <ul>
+            {% for servicio in servicios %}
+                <li>{{ servicio }}</li>
+            {% endfor %}
+        </ul>#}
+
+        <div class="message-box">
+            <p>¡Gracias por utilizar nuestro servicio! Si necesita más información o desea regresar, haga clic en el botón a continuación.</p>
+        </div>
+
+        <a href="{{ url_for('logout') }}" class="btn">Regresar al inicio</a>
+    </div>
+</body>
+</html>
