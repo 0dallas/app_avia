@@ -310,7 +310,7 @@ def formulario():
         # df['alcohol'] = int(request.form.get('alcohol'))
         # df['memoria'] = int(request.form.get('memoria'))
 
-    return render_template("formulario.html")
+    return render_template('multi-step-form.html')
 
 @app.route('/logout')
 def logout():
