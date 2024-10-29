@@ -136,7 +136,48 @@ def guardar_data(datos):
     cursor.execute(insert_query, data_to_insert)
     conn.commit()
     cursor.close()
-    conn.close() 
+    conn.close()
+
+
+def guardar_data2(datos):
+    # Conexión a la base de datos
+    conn = connector.connect(
+        os.environ["INSTANCE_CONNECTION_NAME"],
+        "pg8000",
+        user=os.environ["DB_USER"],
+        password=os.environ["DB_PASS"],
+        db=os.environ["DB_NAME"]
+    )
+    cursor = conn.cursor()
+
+    # Definición de la consulta de inserción con el número correcto de marcadores de posición
+    insert_query = """
+        INSERT INTO public.datos 
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    """
+
+    # Contar cuántos parámetros se esperan
+    expected_param_count = insert_query.count('%s')
+
+    # Rellenar con None si hay menos parámetros de los esperados
+    data_to_insert = list(datos) + [None] * (expected_param_count - len(datos))
+
+    # Comprobar que no se exceda el número de parámetros
+    if len(data_to_insert) > expected_param_count:
+        print(f"Error: Se esperaban máximo {expected_param_count} parámetros, pero se proporcionaron {len(datos)}.")
+        return
+
+    # Inserción de datos en la base de datos
+    try:
+        cursor.execute(insert_query, data_to_insert)
+        conn.commit()
+    except Exception as e:
+        print(f"Ocurrió un error al insertar datos: {e}")
+        conn.rollback()  # Revertir en caso de error
+    finally:
+        cursor.close()
+        conn.close()
+
 
 def es_correo_valido(correo):
     # Expresión regular para validar el formato del correo

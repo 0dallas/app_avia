@@ -5,7 +5,7 @@ from datetime import datetime
 import joblib
 import csv
 
-from func import enviar_email,generar_codigo, existe_usuario_correo, consultar_contra, guardar_usuario,modificar_password,guardar_data,es_correo_valido
+from func import enviar_email,generar_codigo, existe_usuario_correo, consultar_contra, guardar_usuario,modificar_password,guardar_data, guardar_data2,es_correo_valido
 
 pipeline = joblib.load('model_pipeline.pkl')
 
@@ -202,7 +202,7 @@ def formulario():
             df['user']=user_global
             ### prueba ###
             df['fecha_nacimiento'] = request.form.get('fecha_nacimiento')
-            df['edad'] = ((datetime.now() - pd.to_datetime(df['fecha_nacimiento']))).dt.total_seconds()
+            df['edad'] = (datetime.now() - pd.to_datetime(df['fecha_nacimiento'])).dt.total_seconds()
             df['edad'] = df['edad'] /(3600*24*365)
             df['fecha_nacimiento'] = pd.to_datetime(df['fecha_nacimiento']).dt.strftime('%Y-%m-%d')
             df['estado_civil'] = request.form.get('estado_civil')
@@ -341,28 +341,14 @@ def formulario():
 
             df['comorbilidad'] = df['comorbilidad'].astype(str)
 
-            # Recorrer todas las columnas del dataframe y verificar si tienen valores nulos
-            # for column in df.columns:
-            #    if pd.isnull(df[column][0]) or df[column][0] == '':
-            #       return f"El campo '{column}' está vacío o es null."
-                    # df[column][0] = None  # Asignar None al campo vacío o nulo
-
-
-            #guardar_data(tuple(df.iloc[0])) REVISAR
-
-            # print("Datos que se intentan insertar:", tuple(df.iloc[0]))
-
-            # print(df.head())
-            # df.to_csv('columnas_no_fragil.csv',index=False)
-
-            # df['user'] = 'init'  # OJO
+            guardar_data2(tuple(df.iloc[0]))
 
             generar_informe(request.form)
 
             return render_template('informe.html')
         ##############
 
-    return render_template("formulario.html")
+    return render_template("multi-step-form.html")
 
 
 @app.route('/logout')
