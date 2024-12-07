@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Multi-Paso 2</title>
+    <link rel="stylesheet" href={{ url_for('static', filename='multi-step-styles.css') }}>
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='img/logo_avia.png') }}" class="logo">
+
+        <div class="question-counter">
+            <span id="current-question">1</span>/<span id="total-questions">11</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        
+        <form id="multi-step-form" method="POST">
+            <div class="step" data-step="12">
+                <h2>Sobre su salud</h2>
+                <p>Antes de comenzar con esta parte del cuestionario, te vamos a pedir que tengas a mano un centímetro porque más adelante vamos a necesitarlo.</p>
+                
+                <label>¿Tiene diagnóstico de Hipertensión arterial?</label>
+
+                <div class="radio-group">
+                    <label><input type="radio" name="hipertension" value="si" required>Sí</label>
+                    <label><input type="radio" name="hipertension" value="no" >No</label>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+
+            <div class="step" data-step="13">
+                <h2>Sobre su salud</h2>
+                
+                <label>¿Tiene angina de pecho? (esto se refiere a dolor de pecho como causa de alteraciones en sus arterias coronarias)</label>
+
+                <div class="radio-group">
+                    <label><input type="radio" name="angina" value="si" required>Sí</label>
+                    <label><input type="radio" name="angina" value="no" >No</label>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+
+            <div class="step" data-step="14">
+                <h2>Sobre su salud</h2>
+            
+                <label>¿Tiene insuficiencia cardiaca?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="insuficiencia_card" value="si" required>Sí</label>
+                    <label><input type="radio" name="insuficiencia_card" value="no">No</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="15">
+                <h2>Sobre su salud</h2>
+            
+                <label>¿Ha tenido alguna vez un infarto?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="infarto" value="si" required>Sí</label>
+                    <label><input type="radio" name="infarto" value="no">No</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="16">
+                <h2>Sobre su salud</h2>
+            
+                <label>¿Ha tenido alguna vez un ACV?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="acv" value="si" required>Sí</label>
+                    <label><input type="radio" name="acv" value="no">No</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="17">
+                <h2>Sobre su salud</h2>
+            
+                <label>¿Tiene Diabetes?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="diabetes" value="si" required>Sí</label>
+                    <label><input type="radio" name="diabetes" value="no">No</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="18">
+                <h2>Sobre su salud</h2>
+            
+                <label>¿Tiene EPOC?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="epoc" value="si" required>Sí</label>
+                    <label><input type="radio" name="epoc" value="no">No</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="19">
+                <h2>Sobre su salud</h2>
+            
+                <label>¿Tiene Artrosis?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="artrosis" value="si" required>Sí</label>
+                    <label><input type="radio" name="artrosis" value="no">No</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="20">
+                <h2>Sobre su salud</h2>
+            
+                <label>¿Tiene Osteoporosis?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="osteoporosis" value="si" required>Sí</label>
+                    <label><input type="radio" name="osteoporosis" value="no">No</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="21">
+                <h2>Sobre su salud</h2>
+            
+                <label>¿Tiene Incontinencia urinaria?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="continencia" value="si" required>Sí</label>
+                    <label><input type="radio" name="continencia" value="no">No</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="22">
+                <h2>Sobre su salud</h2>
+            
+                <label for="obesidad_abdominal">¿Tiene obesidad Abdominal?</label>
+                <p>Para responder esta pregunta, necesitará una cinta métrica de modista para poder tomar las dimensiones. Responderá <strong>SI</strong> si el diámetro del abdomen es Mayor a 102 centímetros en varones o mayor a 88 centímetros en mujeres. En cualquier otro caso, responderá <strong>NO</strong>.                </p>
+                
+                <div class="radio-group">
+                    <label><input type="radio" name="obesidad_abdominal" value="si" required>Sí</label>
+                    <label><input type="radio" name="obesidad_abdominal" value="no">No</label>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="23">
+                <h2>Sobre su salud</h2>
+            
+                <label>¿Presenta alguna patología de salud mental?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="d_mentales" value="si" required>Sí</label>
+                    <label><input type="radio" name="d_mentales" value="no">No</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="24">
+                <h2>Sobre su salud</h2>
+            
+                <label for="peso">¿Cuál es su peso aproximado en kilogramos?</label>
+                <input type="number" id="peso" name="peso" step="0.01" required>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="25">
+                <h2>Sobre su salud</h2>
+            
+                <label for="altura">¿Cuál es su altura aproximada en metros? (Ejemplo: 1.75)</label>
+                <input type="number" id="altura" name="altura" step="0.01" required>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+
+            <div class="step" data-step="26">
+                <h2>Sobre sus hábitos</h2>
+            
+                <label>¿Fuma?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="fuma" value="si" required>Sí</label>
+                    <label><input type="radio" name="fuma" value="no">No</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="27">
+                <h2>Sobre sus hábitos</h2>
+            
+                <label>¿Consume alcohol?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="alcohol" value="1" required>Casi todos los días</label>
+                    <label><input type="radio" name="alcohol" value="2">Cinco o seis días a la semana</label>
+                    <label><input type="radio" name="alcohol" value="3">Tres o cuatro días a la semana</label>
+                    <label><input type="radio" name="alcohol" value="4">Una o dos veces a la semana</label>
+                    <label><input type="radio" name="alcohol" value="5">Una o dos veces al mes</label>
+                    <label><input type="radio" name="alcohol" value="6">Una vez cada dos meses</label>
+                    <label><input type="radio" name="alcohol" value="7">Una o dos veces al año</label>
+                    <label><input type="radio" name="alcohol" value="8">Ninguna en los últimos 12 meses</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="28">
+                <h2>Sobre la autopercepción de su salud</h2>
+            
+                <label>Usted piensa que su audición es:</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="audicion" value="buena" required>Buena</label>
+                    <label><input type="radio" name="audicion" value="regular">Regular</label>
+                    <label><input type="radio" name="audicion" value="mala">Mala</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="29">
+                <h2>Sobre la autopercepción de su salud</h2>
+            
+                <label>Usted piensa que su visión es:</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="vision" value="buena" required>Buena</label>
+                    <label><input type="radio" name="vision" value="regular">Regular</label>
+                    <label><input type="radio" name="vision" value="mala">Mala</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="30">
+                <h2>Sobre la autopercepción de su salud</h2>
+            
+                <label>¿Se ha caído en el último año?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="caidas" value="1" required>Sí</label>
+                    <label><input type="radio" name="caidas" value="2">No</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="31">
+                <h2>Sobre la autopercepción de su salud</h2>
+            
+                <label>Si usted tuviera que describir su estado de salud, diría que es:</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="estado_salud" value="1" required>Excelente</label>
+                    <label><input type="radio" name="estado_salud" value="2">Muy bueno</label>
+                    <label><input type="radio" name="estado_salud" value="3">Bueno</label>
+                    <label><input type="radio" name="estado_salud" value="4">Regular</label>
+                    <label><input type="radio" name="estado_salud" value="5">Malo</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="32">
+                <h2>Sobre la autopercepción de su salud</h2>
+            
+                <label>¿Tiene algún dolor que lo acompañe crónicamente? Si es así, ¿qué intensidad le pondría?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="dolor" value="2" required>No tiene ningún dolor crónico</label>
+                    <label><input type="radio" name="dolor" value="1">Tiene dolor crónico con intensidad baja</label>
+                    <label><input type="radio" name="dolor" value="1">Tiene dolor crónico con intensidad moderada</label>
+                    <label><input type="radio" name="dolor" value="1">Tiene dolor crónico con intensidad alta</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="33">
+                <h2>Sobre la autopercepción de su salud</h2>
+            
+                <label>¿Usted tiene o ha tenido problemas de equilibrio, como por ejemplo, siente que le da vueltas el lugar en el que está?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="equilibrio" value="nunca" required>Nunca he tenido problemas de equilibrio</label>
+                    <label><input type="radio" name="equilibrio" value="ocasiones">En ocasiones he tenido problemas de equilibrio</label>
+                    <label><input type="radio" name="equilibrio" value="todo_tiempo">Todo el tiempo tengo problemas de equilibrio</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="34">
+                <h2>Sobre la autopercepción de su salud</h2>
+            
+                <label>Usted diría que su memoria es:</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="memoria" value="1" required>Excelente</label>
+                    <label><input type="radio" name="memoria" value="2">Muy bueno</label>
+                    <label><input type="radio" name="memoria" value="3">Bueno</label>
+                    <label><input type="radio" name="memoria" value="4">Regular</label>
+                    <label><input type="radio" name="memoria" value="5">Malo</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="35">
+                <h2>Sobre la autopercepción de su salud</h2>
+            
+                <label>¿Cómo piensa que es su sueño por las noches?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="suenio" value="1" required>Muy bueno</label>
+                    <label><input type="radio" name="suenio" value="2">Bueno</label>
+                    <label><input type="radio" name="suenio" value="3">Malo</label>
+                    <label><input type="radio" name="suenio" value="4">Muy malo</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="36">
+                <h2>Sobre la autopercepción de su salud</h2>
+            
+                <label>¿Se siente solo/a?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="soledad" value="1" required>Nunca o casi nunca</label>
+                    <label><input type="radio" name="soledad" value="2">A veces</label>
+                    <label><input type="radio" name="soledad" value="3">Muy frecuente o siempre</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="37">
+                <h2>Sobre la autopercepción de su salud</h2>
+            
+                <label>Durante la última semana, ¿sintió que su sueño fue insatisfactorio?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="fatigabilidad_1" value="1" required>Sí</label>
+                    <label><input type="radio" name="fatigabilidad_1" value="2">No</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+            
+            <div class="step" data-step="38">
+                <h2>Sobre la autopercepción de su salud</h2>
+            
+                <label>Durante la última semana, ¿le ha costado comenzar el día?</label>
+            
+                <div class="radio-group">
+                    <label><input type="radio" name="fatigabilidad_2" value="1" required>Sí</label>
+                    <label><input type="radio" name="fatigabilidad_2" value="2">No</label>
+                </div>
+            
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div> 
+ 
+    <div class="step" data-step="39">
+        <h2>Pruebas Físicas</h2>
+        <p>Ahora realizaremos algunas pruebas sencillas para evaluar su fuerza y equilibrio.</p>
+        <div class="nav-buttons">
+            <button type="button" class="btn-prev">Anterior</button>
+            <button type="button" class="btn-next">Continuar</button>
+        </div>
+    </div>
+
+    <div class="step" data-step="40">
+        <h2>Test de la Silla</h2>
+        <p>Esta prueba nos ayudará a evaluar su fuerza en las piernas y su equilibrio.</p>
+        <div class="test-instructions">
+            <p>1. Por favor, siéntese en una silla.</p>
+            <p>2. Cuando esté listo, levántese sin usar los brazos para apoyarse, y luego vuelva a sentarse.</p>
+            <p>3. Repita este movimiento durante un minuto.</p>
+        </div>
+        <div class="alert-box">
+            <p>No se preocupe si necesita hacer una pausa o si le resulta difícil. Hágalo a su ritmo.</p>
+        </div>
+        <label>Número de repeticiones completadas en 1 minuto:</label>
+        <input type="number" id="test_silla" name="test_silla" min="0" step="1" required>
+        <div class="nav-buttons">
+            <button type="button" class="btn-prev">Anterior</button>
+            <button type="button" class="btn-next">Continuar</button>
+        </div>
+    </div>
+
+    <div class="step" data-step="41">
+        <h2>Test de Caminata</h2>
+        <p>Ahora realizaremos una prueba de caminata de 2,4 metros (aproximadamente el largo de una cama y media o un sofá de 3 cuerpos).</p>
+        <label>Tiempo en segundos que tardó en recorrer la distancia:</label>
+        <input type="number" id="tiempo_caminar" name="tiempo_caminar" step="0.1" required>
+        <div class="nav-buttons">
+            <button type="button" class="btn-prev">Anterior</button>
+            <button type="button" class="btn-next">Continuar</button>
+        </div>
+    </div> 
+
+<!-- Memory Test Introduction -->
+<div class="step" data-step="42">
+    <h2>Prueba de Memoria Mini-Cog©</h2>
+    <p>A continuación realizaremos una breve prueba para evaluar su memoria.</p>
+    <p>Se le mostrarán 3 palabras que deberá recordar más adelante.</p>
+    <div class="nav-buttons">
+        <button type="button" class="btn-prev">Anterior</button>
+        <button type="button" class="btn-next">Comenzar Prueba</button>
+    </div>
+</div>
+
+<!-- Step 1: Word Display -->
+<div class="step" data-step="43">
+    <h2>Test de Memoria Mini-Cog©</h2>
+    <div class="word-display">
+        <h3>Diga las siguientes palabras y recuérdelas:</h3>
+        <div class="memory-words">
+            <p>ÁRBOL</p>
+            <p>ROJO</p>
+            <p>PERRO</p>
+        </div>
+    </div>
+    <div class="nav-buttons">
+        <button type="button" class="btn-prev">Anterior</button>
+        <button type="button" class="btn-next">He memorizado las palabras</button>
+    </div>
+</div>
+
+<!-- Step 2: Clock Drawing Test - Instructions -->
+<div class="step" data-step="44">
+    <h2>Test del Reloj</h2>
+    <p>A continuación dibujará un reloj siguiendo estas instrucciones:</p>
+    <div class="instruction-box">
+        <ol>
+            <li>Dibuje un círculo grande</li>
+            <li>Coloque todos los números de las horas (1-12)</li>
+            <li>Dibuje las manecillas marcando las 11:10</li>
+        </ol>
+    </div>
+    <div class="clock-canvas-container">
+        <canvas id="clockCanvas" width="300" height="300"></canvas>
+        <div class="drawing-controls">
+            <button type="button" class="tool-btn" id="eraserBtn">
+                <span>Borrador</span>
+            </button>
+            <button type="button" class="tool-btn" id="undoBtn">
+                <span>Deshacer</span>
+            </button>
+            <button type="button" class="tool-btn" id="clearBtn">
+                <span>Limpiar</span>
+            </button>
+        </div>
+    </div>
+    <div class="nav-buttons">
+        <button type="button" class="btn-prev">Anterior</button>
+        <button type="button" class="btn-next">Continuar</button>
+    </div>
+</div>
+
+<!-- Step 3: Word Recall Question -->
+<div class="step" data-step="45">
+    <h2>Recordatorio de Palabras</h2>
+    <p>¿Recuerda las palabras que le mostramos anteriormente?</p>
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="remember_words" value="yes" required>
+            Sí, las recuerdo
+        </label>
+        <label>
+            <input type="radio" name="remember_words" value="no">
+            No, no las recuerdo
+        </label>
+    </div>
+    <div class="nav-buttons">
+        <button type="button" class="btn-prev">Anterior</button>
+        <button type="button" class="btn-next">Continuar</button>
+    </div>
+</div>
+
+<!-- Step 4: Word Input (only shown if user remembers) -->
+<div class="step" data-step="46">
+    <h2>Escriba las Palabras</h2>
+    <p>Por favor, escriba las palabras que recuerda:</p>
+    <div class="word-inputs">
+        <input 
+            type="text" 
+            name="recalled_word_1"
+            class="memory-input" 
+            placeholder="Primera palabra"
+            autocomplete="off"
+            maxlength="20">
+        <input 
+            type="text" 
+            name="recalled_word_2"
+            class="memory-input" 
+            placeholder="Segunda palabra"
+            autocomplete="off"
+            maxlength="20">
+        <input 
+            type="text" 
+            name="recalled_word_3"
+            class="memory-input" 
+            placeholder="Tercera palabra"
+            autocomplete="off"
+            maxlength="20">
+    </div>
+    <div class="nav-buttons">
+        <button type="button" class="btn-prev">Anterior</button>
+        <button type="button" class="btn-next">Continuar</button>
+    </div>
+</div>
+
+<!-- Step 5: Clock Evaluation -->
+<div class="step" data-step="47">
+    <h2>Evaluación del Reloj</h2>
+    <div class="clock-evaluation">
+
+        <div class="clock-comparison">
+            <div class="your-clock">
+                <h3>Su Reloj</h3>
+                <img id="userClockImage" alt="Su dibujo del reloj" src="">
+            </div>
+            <div class="reference-clock">
+                <h3>Reloj de Referencia</h3>
+                <img src="{{ url_for('static', filename='img/clock.png') }}" class="logo">
+            </div>
+        </div>
+
+        <div class="evaluation-questions">
+            <div class="eval-item">
+                <p>¿Los números están colocados correctamente?</p>
+                <div class="radio-group">
+                    <label><input type="radio" name="numbers_correct" value="yes">Sí</label>
+                    <label><input type="radio" name="numbers_correct" value="no">No</label>
+                </div>
+            </div>
+            <div class="eval-item">
+                <p>¿Las manecillas marcan correctamente las 11:10?</p>
+                <div class="radio-group">
+                    <label><input type="radio" name="hands_correct" value="yes">Sí</label>
+                    <label><input type="radio" name="hands_correct" value="no">No</label>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="nav-buttons">
+            <button type="button" class="btn-prev">Anterior</button>
+            <button type="button" class="btn-next">Continuar</button>
+        </div>
+</div>
+
+<!-- Social Networks -->
+<div class="step" data-step="48">
+    <h2>Sobre Redes</h2>
+    <label>¿Cómo describiría su uso de redes sociales? (Facebook, Instagram, Whatsapp)</label>
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="uso_redes" value="diario" required>
+            Las utiliza todos los días
+        </label>
+        <label>
+            <input type="radio" name="uso_redes" value="aveces">
+            La utiliza a veces
+        </label>
+        <label>
+            <input type="radio" name="uso_redes" value="nunca">
+            No las utiliza casi nunca
+        </label>
+    </div>
+    <div class="nav-buttons">
+        <button type="button" class="btn-prev">Anterior</button>
+        <button type="button" class="btn-next">Continuar</button>
+    </div>
+</div>
+
+<div class="step" data-step="49">
+    <h2>Sobre Redes</h2>
+    <label>Usted considera que tiene una red social de apoyo (personas o recursos que lo ayudan en su vida diaria):</label>
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="red_apoyo" value="alta" required>
+            Alta (tengo suficientes personas o recursos que pueden ayudarme)
+        </label>
+        <label>
+            <input type="radio" name="red_apoyo" value="baja">
+            Baja (no cuento con personas o recursos que puedan ayudarme)
+        </label>
+    </div>
+    <div class="nav-buttons">
+        <button type="button" class="btn-prev">Anterior</button>
+        <button type="button" class="btn-next">Continuar</button>
+    </div>
+</div>
+
+<!-- Mood State -->
+<div class="step" data-step="50">
+    <h2>Sobre el estado de ánimo</h2>
+    <label>Ahora vamos a hacerte unas preguntas sobre tu estado de ánimo. De los siguientes enunciados, ¿Cuáles describen mejor su ánimo en las últimas 2 semanas? Elija todas las opciones que considere</label>
+    <div class="radio-group">
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="poco_apetito">
+            Tengo poco apetito
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="tristeza">
+            No puedo quitarme la tristeza
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="dificultad_concentracion">
+            Tengo dificultades para concentrarme en lo que hago
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="deprimido">
+            Me sentí deprimido
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="no_descanso">
+            Duermo y no descanso
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="tristeza_general">
+            Me siento triste
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="no_avanzar">
+            No puedo seguir adelante
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="no_felicidad">
+            Nada me hace feliz
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="mala_persona">
+            Siento que soy una mala persona
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="perdida_interes">
+            He perdido el interés en mis actividades habituales
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="mucho_dormir">
+            Duermo mucho más que lo habitual
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="movimiento_lento">
+            Siento que me muevo muy lento
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="intranquilo">
+            Me siento intranquilo
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="deseos_muerte">
+            Siento deseos de estar muerto
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="autolesion">
+            Quiero hacerme daño
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="cansancio">
+            Me siento cansado todo el tiempo
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="disgusto">
+            Estoy a disgusto conmigo mismo
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="perdida_peso">
+            He perdido peso sin buscarlo
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="insomnio">
+            Me cuesta mucho trabajo dormir
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="concentracion">
+            Me cuesta concentrarme en las cosas importantes
+        </label>
+        <label>
+            <input type="checkbox" name="estado_animo[]" value="ninguna">
+            Ninguna de las anteriores
+        </label>
+    </div>
+    <div class="nav-buttons">
+        <button type="button" class="btn-prev">Anterior</button>
+        <button type="button" class="btn-next">Continuar</button>
+    </div>
+</div>
+
+<!-- Physical Activities -->
+<div class="step" data-step="51">
+    <h2>Sobre sus actividades físicas</h2>
+    <p>Ahora le consultaremos acerca de sus actividades semanales.</p>
+    <label>¿Cuántas veces a la semana realiza actividad física tales como deportes como fútbol o tenis, nadar rápido o correr?</label>
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="actividad_intensa" value="una_vez" required>
+            Una vez a la semana
+        </label>
+        <label>
+            <input type="radio" name="actividad_intensa" value="una_tres">
+            De una a tres veces por semana
+        </label>
+        <label>
+            <input type="radio" name="actividad_intensa" value="ninguna">
+            No realizo ese tipo de actividades
+        </label>
+    </div>
+    <div class="nav-buttons">
+        <button type="button" class="btn-prev">Anterior</button>
+        <button type="button" class="btn-next">Continuar</button>
+    </div>
+</div>
+
+<div class="step" data-step="52">
+    <h2>Sobre sus actividades físicas</h2>
+    <label>¿Cuántas veces a la semana realiza actividades tales como caminar rápido, andar en bicicleta a un ritmo tranquilo, bailar o hacer tareas domésticas como barrer o cortar el pasto?</label>
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="actividad_moderada" value="una_vez" required>
+            Una vez a la semana
+        </label>
+        <label>
+            <input type="radio" name="actividad_moderada" value="una_tres">
+            De una a tres veces por semana
+        </label>
+        <label>
+            <input type="radio" name="actividad_moderada" value="ninguna">
+            No realizo ese tipo de actividades
+        </label>
+    </div>
+    <div class="nav-buttons">
+        <button type="button" class="btn-prev">Anterior</button>
+        <button type="button" class="btn-next">Continuar</button>
+    </div>
+</div>
+
+<div class="step" data-step="53">
+    <h2>Sobre sus actividades físicas</h2>
+    <label>¿Cuántas veces a la semana realiza actividades como caminar despacio, estirarse, hacer tareas domésticas ligeras, o estar de pie?</label>
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="actividad_leve" value="una_vez" required>
+            Una vez a la semana
+        </label>
+        <label>
+            <input type="radio" name="actividad_leve" value="una_tres">
+            De una a tres veces por semana
+        </label>
+        <label>
+            <input type="radio" name="actividad_leve" value="ninguna">
+            No realizo ese tipo de actividades
+        </label>
+    </div>
+    <div class="nav-buttons">
+        <button type="button" class="btn-prev">Anterior</button>
+        <button type="button" class="btn-next">Continuar</button>
+    </div>
+</div>
+
+<!-- Final Question -->
+<div class="step" data-step="54">
+    <h2>Última pregunta</h2>
+    <label>¿Quién completó este formulario?</label>
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="quien_completo" value="yo" required>
+            Yo lo completé
+        </label>
+        <label>
+            <input type="radio" name="quien_completo" value="otro">
+            Otra persona lo completó por mí
+        </label>
+    </div>
+    <div class="nav-buttons">
+        <button type="button" class="btn-prev">Anterior</button>
+        <button type="submit" class="btn-submit">Finalizar</button>
+    </div>
+</div>
+
+<!-- Thank You Message -->
+<div class="step" data-step="55">
+    <h2>¡Terminamos!</h2>
+    <p>Muchas gracias por su participación.</p>
+</div>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='multi-step-script2.js') }}"></script>
+</body>
+</html>

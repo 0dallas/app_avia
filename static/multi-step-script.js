@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('multi-step-form');
     const steps = form.querySelectorAll('.step');
     const progressBar = document.querySelector('.progress');
@@ -12,12 +12,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         updateProgress(stepIndex);
         toggleNextButton(stepIndex);
+
+        const currentQuestionElement = document.getElementById('current-question');
+        if (currentQuestionElement) {
+            currentQuestionElement.textContent = stepIndex + 1;
+        }
+
+        // If you want to set total questions dynamically
+        const totalQuestionsElement = document.getElementById('total-questions');
+        if (totalQuestionsElement) {
+            totalQuestionsElement.textContent = steps.length;
+        }
     }
 
     function updateProgress(stepIndex) {
         const progress = ((stepIndex + 1) / steps.length) * 100;
         progressBar.style.width = `${progress}%`;
-        
+
         stepIndicators.forEach((indicator, index) => {
             indicator.classList.toggle('active', index <= stepIndex);
         });
@@ -64,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    form.addEventListener('click', function(e) {
+    form.addEventListener('click', function (e) {
         if (e.target.classList.contains('btn-next')) {
             e.preventDefault();
             nextStep();
@@ -74,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    form.addEventListener('change', function(e) {
+    form.addEventListener('change', function (e) {
         toggleNextButton(currentStep);
     });
 

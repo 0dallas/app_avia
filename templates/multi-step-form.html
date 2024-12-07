@@ -9,6 +9,11 @@
 <body>
     <div class="container">
         <img src="{{ url_for('static', filename='img/logo_avia.png') }}" alt="Logo Avia" class="logo">
+
+        <div class="question-counter">
+            <span id="current-question">1</span>/<span id="total-questions">11</span>
+        </div>
+
         <div class="progress-bar">
             <div class="progress"></div>
         </div>
@@ -21,89 +26,120 @@
                 <p>Te voy a realizar una serie de preguntas que nos van a llevar entre 10 y 15 minutos y que nos van a ayudar mucho a mejorar nuestra tecnología para predecir cuestiones de salud.</p>
                 <p>Quiero contarte que todos los datos recabados serán únicamente utilizados con fines de investigación.</p>
                 <p>Bien, ¡Empecemos!</p>
-                <br>
-                <button type="button" class="btn-next">Continuar</button>
+                <br/>
+                <div class="nav-buttons">
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
             </div>
 
             <div class="step" data-step="2">
+                <h2>Identificación</h2>
+                <p>Antes que nada, vamos a necesitar un correo electrónico o celular, para identificarte. Es importante para nosotros poder enviarte un informe personalizado al final del cuestionario, pero te prometemos que no te vamos a molestar.</p>
+                
+                <label>Correo electrónico</label>
+                <div class="form-group">
+                    <input type="email" 
+                           id="user-email" 
+                           name="user-email" 
+                           placeholder="Ingresa tu correo electrónico"
+                           required>
+                </div>
+                
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+
+            <div class="step" data-step="3">
                 <h2>Datos sociodemográficos</h2>
                 <p>Acá te vamos a consultar algunos datos personales que nos sirven para entender mejor cuál es la población con la que trabajamos.</p>
                 <label for="fecha_nac">1 - ¿Cuál es su fecha de nacimiento? dd/mm/aa</label>
                 <div class="radio-group">
                     <input type="date" id="fecha_nac" name="fecha_nacimiento" required>
                 </div>
-                <button type="button" class="btn-prev">Anterior</button>
-                <button type="button" class="btn-next">Continuar</button>
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
             </div>
 
-            <div class="step" data-step="3">
+            <div class="step" data-step="4">
                 <h2>Datos sociodemográficos</h2>
                 <label>2 - ¿Cuál es su estado civil?</label>
                 <div class="radio-group">
                     <label><input type="radio" name="estado_civil" value="soltero" required> Soltera/Soltero</label>
                     <label><input type="radio" name="estado_civil" value="casado"> Casada/Casado</label>
-                    <label><input type="radio" name="estado_civil" value="concubino"> Concubina/Concubino</label>
-                    <label><input type="radio" name="estado_civil" value="divorciado"> Divorciada/Divorciado</label>
+                    <label><input type="radio" name="estado_civil" value="concubino"> Concubina/o</label>
+                    <label><input type="radio" name="estado_civil" value="divorciado"> Divorciado/a Separado/a</label>
                     <label><input type="radio" name="estado_civil" value="viudo"> Viuda/Viudo</label>
                 </div>
-                <button type="button" class="btn-prev">Anterior</button>
-                <button type="button" class="btn-next">Continuar</button>
-            </div>
-
-            <div class="step" data-step="4">
-                <h2>Datos sociodemográficos</h2>
-                <label>3 - Sexo de nacimiento</label>
-                <div class="radio-group">
-                    <label><input type="radio" name="sexo" value="varon" required> Varón </label>
-                    <label><input type="radio" name="sexo" value="mujer">Mujer</label>
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
                 </div>
-                <button type="button" class="btn-prev">Anterior</button>
-                <button type="button" class="btn-next">Continuar</button>
             </div>
 
             <div class="step" data-step="5">
                 <h2>Datos sociodemográficos</h2>
-                <label>4 - ¿Cuál es el grado de escolaridad máxima alcanzada?</label>
+                <label>3 - ¿Cuál es tu sexo de nacimiento?</label>
                 <div class="radio-group">
-                    <label><input type="radio" name="escolaridad" value="1" required> Título universitario </label>
-                    <label><input type="radio" name="escolaridad" value="2">Técinco</label>
-                    <label><input type="radio" name="escolaridad" value="3">Bachillerato/Preparatoria</label>
-                    <label><input type="radio" name="escolaridad" value="4">Secundaria completa</label>
-                    <label><input type="radio" name="escolaridad" value="5">Primaria completa</label>
-                    <label><input type="radio" name="escolaridad" value="6">Otro</label>
-                    <label><input type="radio" name="escolaridad" value="7">Sin estudios</label>
+                    <label><input type="radio" name="sexo" value="varon" required>Varón</label>
+                    <label><input type="radio" name="sexo" value="mujer">Mujer</label>
                 </div>
-                <button type="button" class="btn-prev">Anterior</button>
-                <button type="button" class="btn-next">Continuar</button>
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
             </div>
 
             <div class="step" data-step="6">
+                <h2>Datos sociodemográficos</h2>
+                <label>4 - ¿Cuál es el grado de escolaridad máxima que alcanzó?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="escolaridad" value="1" required>Primario incompleto</label>
+                    <label><input type="radio" name="escolaridad" value="2">Primario completo</label>
+                    <label><input type="radio" name="escolaridad" value="3">Secundario completo</label>
+                    <label><input type="radio" name="escolaridad" value="4">Terciario</label>
+                    <label><input type="radio" name="escolaridad" value="5">Universitario</label>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+
+            <div class="step" data-step="7">
                 <h2>Datos sociodemográficos</h2>
                 <label>5 - ¿Cómo definiría su ocupación a lo largo de su vida?</label>
                 <div class="radio-group">
                     <label><input type="radio" name="ocupacion" value="prof_empre_ger" required> Profesional/Empresario/Cargo Gerencial </label>
                     <label><input type="radio" name="ocupacion" value="emple_cuent_ama">Ocupaciones Generales/Empleado/Cuentapropista/Ama de casa</label>
-                    <label><input type="radio" name="ocupacion" value="no_trabajo">Nunca trabajó</label>
+                    <label><input type="radio" name="ocupacion" value="no_trabajo">Nunca trabajé</label>
                 </div>
-                <button type="button" class="btn-prev">Anterior</button>
-                <button type="button" class="btn-next">Continuar</button>
-            </div>
-
-            <div class="step" data-step="7">
-                <h2>Autonomía actual</h2>
-                <label>6 - Según sus ingresos diría que es...</label>
-                <div class="radio-group">
-                    <label><input type="radio" name="clase_ingresos" value="baja" required> Clase Baja (No consigo alimentarme sin ayuda de otros) </label>
-                    <label><input type="radio" name="clase_ingresos" value="media_baja">Clase Media Baja (Tengo garantizado lo mínimo que necesito)</label>
-                    <label><input type="radio" name="clase_ingresos" value="media">Clase Media (Tengo lo que necesito para vivir bien aunque nada me sobra)</label>
-                    <label><input type="radio" name="clase_ingresos" value="media_alta">Clase Media Alta (Me alcanza para vivir bien y puedo ahorrar)</label>
-                    <label><input type="radio" name="clase_ingresos" value="alta">Clase Alta (No tengo ningún tipo de problemas económicos)</label>
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
                 </div>
-                <button type="button" class="btn-prev">Anterior</button>
-                <button type="button" class="btn-next">Continuar</button>
             </div>
 
             <div class="step" data-step="8">
+                <h2>Autonomía actual</h2>
+                <label>6 - Según sus ingresos, qué oración le genera mayor representación...</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="clase_ingresos" value="baja" required>Suelo necesitar de la ayuda de otros para gastos de la vida diaria</label>
+                    <label><input type="radio" name="clase_ingresos" value="media_baja">Tengo garantizado lo mínimo que necesito sin ayudas</label>
+                    <label><input type="radio" name="clase_ingresos" value="media">Tengo lo que necesito para vivir bien aunque nada me sobra</label>
+                    <label><input type="radio" name="clase_ingresos" value="media_alta">Me alcanza para vivir bien y puedo ahorrar</label>
+                    <label><input type="radio" name="clase_ingresos" value="alta">No tengo ningún tipo de problema económico</label>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
+            </div>
+
+            <div class="step" data-step="9">
                 <h2>Autonomía actual</h2>
                 <p>Estas preguntas están destinadas a identificar a partir de una serie de preguntas su grado de autonomía actual</p>
                 <label>7 -  ¿Qué parte del tiempo durante las últimas 4 semanas se sintió cansado/a?</label>
@@ -114,33 +150,39 @@
                     <label><input type="radio" name="fatigabilidad" value="poco">Poco tiempo  (1 vez por semana)</label>
                     <label><input type="radio" name="fatigabilidad" value="ningun">En ningún momento</label>
                 </div>
-                <button type="button" class="btn-prev">Anterior</button>
-                <button type="button" class="btn-next">Continuar</button>
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
             </div>
 
-            <div class="step" data-step="9">
+            <div class="step" data-step="10">
                 <h2>Autonomía actual</h2>
                 <label>8 - ¿Tiene alguna dificultad para subir 10 escalones sin descansar y sin ningún tipo de ayuda?</label>
                 <div class="radio-group">
                     <label><input type="radio" name="resistencia" value="si" required>Sí</label>
                     <label><input type="radio" name="resistencia" value="no">No</label>
                 </div>
-                <button type="button" class="btn-prev">Anterior</button>
-                <button type="button" class="btn-next">Continuar</button>
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
             </div>
 
-            <div class="step" data-step="10">
+            <div class="step" data-step="11">
                 <h2>Autonomía actual</h2>
                 <label>9 - ¿Tiene alguna dificultad para caminar 2 cuadras sin ayuda?</label>
                 <div class="radio-group">
                     <label><input type="radio" name="deambulacion" value="si" required>Sí</label>
                     <label><input type="radio" name="deambulacion" value="no">No</label>
                 </div>
-                <button type="button" class="btn-prev">Anterior</button>
-                <button type="button" class="btn-next">Continuar</button>
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
             </div>
 
-            <div class="step" data-step="11">
+            <div class="step" data-step="12">
                 <h2>Autonomía actual</h2>
                 <label>10 - ¿Alguna vez un/a médico/a le dijo que usted tiene  alguna de las siguientes enfermedades?</label>
                 <div class="radio-group">
@@ -156,19 +198,23 @@
                     <label><input type="checkbox" name="comorbilidad" id="acv" value="acv">ACV</label>
                     <label><input type="checkbox" name="comorbilidad" id="renal" value="renal">Enfermedad renal</label>
                 </div>
-                <button type="button" class="btn-prev">Anterior</button>
-                <button type="button" class="btn-next">Continuar</button>
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="button" class="btn-next">Continuar</button>
+                </div>
             </div>
 
-            <div class="step" data-step="12">
+            <div class="step" data-step="13">
                 <h2>Autonomía actual</h2>
                 <label>11 - ¿Ha tenido pérdida de peso de forma involuntaria en el último año?</label>
                 <div class="radio-group">
                     <label><input type="radio" name="perdida_peso" value="si" required>Sí</label>
                     <label><input type="radio" name="perdida_peso" value="no">No</label>
                 </div>
-                <button type="button" class="btn-prev">Anterior</button>
-                <button type="submit" class="btn-submit">Enviar</button>
+                <div class="nav-buttons">
+                    <button type="button" class="btn-prev">Anterior</button>
+                    <button type="submit" class="btn-submit">Enviar</button>
+                </div>
             </div>
         </form>
     </div>

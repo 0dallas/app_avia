@@ -112,11 +112,10 @@ def registrar():
     return render_template("registrar.html")
 
 @app.route('/formulario',methods=['GET','POST'])
-def formulario():
-    
-    if not session.get('logged_in'):
-        flash('Por favor, inicie sesión primero.', 'danger')
-        return redirect(url_for('login'))
+def formulario():    
+    # if not session.get('logged_in'):
+    #     flash('Por favor, inicie sesión primero.', 'danger')
+    #     return redirect(url_for('login'))
     
     if request.method == "POST":
         global df
@@ -331,6 +330,9 @@ def logout():
 def juego():
     return render_template('game.html')
 
+@app.route('/formulario-siguiente')
+def next_form():
+    return render_template('multi-step-form-2.html')
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0',port=5002)
