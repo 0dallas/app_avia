@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +12,6 @@
             <a href="#que_es_avia">QUÉ ES AVIA</a>
         </div>
     </div>
-    
     <div class="container">
         <div class="cont_izq">
             <h3>¡Hola! Bienvenido a</h3>
