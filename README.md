@@ -1,9 +1,6 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avia</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
-</head>
+# Avia
+   
+
 <body>
     <div class="encabezado">
         <img src="{{ url_for('static', filename='static/img/logo_avia.png') }}" class="logo" width="200" height="100">
