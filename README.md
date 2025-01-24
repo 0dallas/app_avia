@@ -1,17 +1,6 @@
 # Avia
-   
+![Descripción de la imagen](static/img/logo_avia2.png)
 
-<body>
-    <div class="encabezado">
-        <img src="{{ url_for('static', filename='static/img/logo_avia.png') }}" class="logo" width="200" height="100">
-        <div class="info">
-            <a href="#como_funciona">CÓMO FUNCIONA</a>
-            <a href="#que_es_avia">QUÉ ES AVIA</a>
-        </div>
-    </div>
-    <div class="container">
-        <div class="cont_izq">
-            <h3>¡Hola! Bienvenido a</h3>
             <img src="{{ url_for('static', filename='img/logo_avia2.png') }}" class="logo2" width="200" height="100">
             <p>ALGORITMO DE VALIDACIÓN DE INDEPENDENCIA Y AUTONOMÍA</p><br>
             <a href="{{url_for('login')}}" class="btn">INGRESAR</a>
