@@ -1,5 +1,6 @@
 # Avia
-![Descripción de la imagen](static/img/logo_avia2.png)
+<img src="static/img/logo_avia2.png" alt="Descripción de la imagen" width="300"/>
+
 
             <img src="{{ url_for('static', filename='img/logo_avia2.png') }}" class="logo2" width="200" height="100">
             <p>ALGORITMO DE VALIDACIÓN DE INDEPENDENCIA Y AUTONOMÍA</p><br>
