@@ -1,3 +1,4 @@
+## feature/AV-7
 from flask import Flask, jsonify, request, render_template,redirect,url_for,flash,session
 
 import pandas as pd
@@ -58,6 +59,7 @@ def recuperar():
                 mail = correo
                 global cod
                 cod = generar_codigo()
+                print(cod) ####
                 enviar_email(mail,cod)
                 return render_template("codigo.html",correo=correo)
             else: 
@@ -111,6 +113,30 @@ def registrar():
 
     return render_template("registrar.html")
 
+
+def calcular_fragilidad(form_data):
+    # Inicializar variable 'fragil' en 0
+    fragil = 0
+
+    # Sumar 1 si la respuesta de fatigabilidad es "todo" o "mayor_parte"
+    fragil += 1 if form_data.get('fatigabilidad') in ['todo', 'mayor_parte'] else 0
+
+    # Sumar 1 si la respuesta de resistencia es "si"
+    fragil += 1 if form_data.get('resistencia') == 'si' else 0
+
+    # Sumar 1 si la respuesta de deambulación es "si"
+    fragil += 1 if form_data.get('deambulacion') == 'si' else 0
+
+    # Sumar 1 si hay entre 5 y 11 comorbilidades seleccionadas
+    fragil += 1 if 5 <= len(form_data.getlist('comorbilidad')) <= 11 else 0
+
+    # Sumar 1 si la respuesta de pérdida de peso es "si"
+    fragil += 1 if form_data.get('perdida_peso') == 'si' else 0
+
+    return fragil
+
+
+
 @app.route('/formulario',methods=['GET','POST'])
 def formulario():    
     # if not session.get('logged_in'):
@@ -138,11 +164,13 @@ def formulario():
             df['deambulacion'] = request.form.get('deambulacion')
             df['comorbilidad'] = [request.form.getlist('comorbilidad')]
             df['perdida_peso'] = request.form.get('perdida_peso')
-            
-            if request.form.getlist('comorbilidad') == None:
+
+            clasificacion = calcular_fragilidad(request.form)
+
+            if clasificacion == 0:
                 df['escala_frail'] = 'robusto'
                 return render_template('formulario_2.html')
-            elif len(request.form.getlist('comorbilidad')) <= 2:
+            elif clasificacion <= 2:
                 df['escala_frail'] = 'pre_fragil'
                 return render_template('formulario_2.html')
             else:
