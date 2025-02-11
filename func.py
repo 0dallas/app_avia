@@ -31,7 +31,7 @@ def enviar_email(reciber,cod):
     smtp_server.login(email_sender,password)
     smtp_server.sendmail(email_sender,email_reciber,message.as_string())
     smtp_server.quit()
-
+    print("Correo enviado")
 
 def generar_codigo(longitud=6):
     caracteres = string.ascii_uppercase + string.digits
