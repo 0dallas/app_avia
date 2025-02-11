@@ -84,12 +84,15 @@
             <input type="radio" id="var5" name="clase_ingresos" value="alta">
             <label for="var5">Clase Alta (No tengo ningún tipo de problemas económicos)</label>
             <br><br><br>
-
+            <!-- Sección 2: Autonomia actual: DESDE ACÁ, METODO PARA SUMAR DECIR FRAGIL Ó NO FRAGIL
+                 fragil mayor igual a 3 puntos (NO PASA AL 2DO FORM)
+                 Pre fragil si es menor que 3 puntos (PASA)
+                 Robusto = 0 (PASA)
+            -->
             <h2>Autonomía actual</h2><br>
             <p>Estas preguntas están destinadas a identificar a partir de una serie de preguntas su grado de autonomía actual</p>
             <br><br>
-
-            <label>7-  ¿Qué parte del tiempo durante las últimas 4 semanas se sintió cansado/a?</label><br>
+            <label>7- ¿Qué parte del tiempo durante las últimas 4 semanas se sintió cansado/a?</label><br>
             <input type="radio" id="var1" name="fatigabilidad" value="todo" required>
             <label for="var1">Todo el tiempo (todos los días)</label><br>
             <input type="radio" id="var2" name="fatigabilidad" value="mayor_parte">
@@ -115,8 +118,8 @@
             <input type="radio" id="var2" name="deambulacion" value="no">
             <label for="var2">No</label>
             <br><br>
-
-            <label>10- ¿Alguna vez un/a médico/a le dijo que usted tiene  alguna de las siguientes enfermedades?</label>
+            <!-- De 5 a 11 enfermedades = 1 punto; De 0 a 4 enfermedades = 0 puntos HACER A LOGICA-->
+            <label>10- ¿Alguna vez un/a médico/a le dijo que usted tiene alguna de las siguientes enfermedades?</label>
             <label>MARQUE TODAS LAS QUE CONSIDERE</label><br>
             <input type="checkbox" id="hipertension" name="comorbilidad" value="hipertension">
             <label for="hipertension">Hipertensión</label><br>
@@ -148,7 +151,7 @@
             <input type="radio" id="var2" name="perdida_peso" value="no">
             <label for="var2">No</label>
             <br><br>
-
+            <!-- ACÁ TERMINAN LOS CAMPOS QUE CALCULAN LA primera FRAGILIDAD -->
             <button type="submit">Continuar</button>
         </form>
         <a href="{{ url_for('logout') }}" class="btn">Cerrar Sesión</a>
