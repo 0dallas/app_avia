@@ -59,6 +59,7 @@ def recuperar():
                 mail = correo
                 global cod
                 cod = generar_codigo()
+                print(cod) ####
                 enviar_email(mail,cod)
                 return render_template("codigo.html",correo=correo)
             else: 
